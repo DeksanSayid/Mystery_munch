@@ -15,7 +15,7 @@ var data = [
 {"label":"Tomato & mushroom pancakes", "value":3, "question":"Tomato and mushroom pancakes"}, //color
 {"label":"Summer porridge", "value":4, "question":"Summer porridge"}, //font-weight
 {"label":"Granola", "value":5, "question":"Granola"}, //font-size
-{"label":"Beans & avocado on toast", "value":6, "question":"Mexican bean and avocado on toast"}, //background-color
+{"label":"Beans & avocado on toast", "value":6, "question":"Mexican beans and avocado on toast"}, //background-color
 {"label":"Vegan fry-up", "value":7, "question":"Vegan fry-up"}, //nesting
 {"label":"Coconut & banana pankcakes", "value":8, "question":"Coconut and banana pancakes"}, //bottom
 {"label":"Breakfast muffins", "value":9, "question":"Breakfast muffins"}, //sans-serif
