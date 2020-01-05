@@ -1,9 +1,4 @@
-/*-----------------------------------------------------------*/
-/* This is the "border-box hack" providing intuitive control */
-/* over the height and width of elements on the screen.      */
-/* Courtesy of:                                              */
-/* https://www.paulirish.com/2012/box-sizing-border-box-ftw/ */
-/*-----------------------------------------------------------*/
+
 html {
   box-sizing: border-box;
   scroll-behavior: smooth;
@@ -34,8 +29,8 @@ body > div {
 /*-----------------------------------------------------------*/
 .tile {
   /* Set the dimensions of each tile. */
-  width: 50px;
-  height: 50px;
+  width: 45px;
+  height: 45px;
 
   /* Make them sit snugly together */
   display: inline-block;
@@ -50,8 +45,8 @@ body > div {
 
 /* Walls are blue with an off-blue border. */
 .wall {
-  width: 30px;
-  height: 30px;
+  width: 45px;
+  height: 45px;
   background-color: rgb(145,145,145);
   border: 2px solid rgb(207,207,207);
 }
@@ -88,6 +83,11 @@ body > div {
   background-image: url('../images/mizpacman-down.png');
 }
 
+.vegan {
+  width: 45px;
+  height:auto;
+}
+
 /* navigation bar */
 ul {
   list-style-type: none;
@@ -95,6 +95,9 @@ ul {
   padding: 0;
   overflow: hidden;
   background-color: #333;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
 }
 
 li {
@@ -114,4 +117,60 @@ li a {
 li a:hover {
   background-color: #ff4d4d;
 }
-/* navigation bar */
+
+
+
+/* buttons */
+.vegan {
+position:absolute;
+   top:70%;
+   left:70.5%;
+ }
+
+ #vegan {
+   width: 291%;
+   height: auto;
+ }
+
+.gluten {
+ position:absolute;
+    top:23%;
+    left:21.5%;
+}
+
+#gluten {
+   width: 20%;
+   height: auto;
+ }
+
+ .dairy {
+  position:absolute;
+     top:49%;
+     left:39%;
+ }
+
+ #dairy {
+    width: 26%;
+    height: auto;
+}
+
+/* .halal {
+ position:absolute;
+    top:35%;
+    left:90%;
+}
+
+#halal {
+   width: 25%;
+   height: auto;
+} */
+
+.continue {
+ position:absolute;
+    top:98%;
+    left:39.5%;
+}
+
+#continue {
+   width: 38%;
+   height: auto;
