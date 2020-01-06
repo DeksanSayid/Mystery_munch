@@ -6,20 +6,19 @@ rotation = 0,
 oldrotation = 0,
 picked = 100000,
 oldpick = [],
-color = d3.scale.category20();//category20c()
-//randomNumbers = getRandomNumbers();
-//http://osric.com/bingo-card-generator/?title=HTML+and+CSS+BINGO!&words=padding%2Cfont-family%2Ccolor%2Cfont-weight%2Cfont-size%2Cbackground-color%2Cnesting%2Cbottom%2Csans-serif%2Cperiod%2Cpound+sign%2C%EF%B9%A4body%EF%B9%A5%2C%EF%B9%A4ul%EF%B9%A5%2C%EF%B9%A4h1%EF%B9%A5%2Cmargin%2C%3C++%3E%2C{+}%2C%EF%B9%A4p%EF%B9%A5%2C%EF%B9%A4!DOCTYPE+html%EF%B9%A5%2C%EF%B9%A4head%EF%B9%A5%2Ccolon%2C%EF%B9%A4style%EF%B9%A5%2C.html%2CHTML%2CCSS%2CJavaScript%2Cborder&freespace=true&freespaceValue=Web+Design+Master&freespaceRandom=false&width=5&height=5&number=35#results
+color = d3.scale.category20();
+
 var data = [
-{"label":"French toast", "value":1, "question":"Cinnamon and blueberry French toast"}, // padding
-{"label":"Green rainbow smoothie bowl", "value":2, "question":"Green rainbow smoothie bowl"}, //font-family
-{"label":"Tomato & mushroom pancakes", "value":3, "question":"Tomato and mushroom pancakes"}, //color
-{"label":"Summer porridge", "value":4, "question":"Summer porridge"}, //font-weight
-{"label":"Granola", "value":5, "question":"Granola"}, //font-size
-{"label":"Beans & avocado on toast", "value":6, "question":"Mexican beans and avocado on toast"}, //background-color
-{"label":"Vegan fry-up", "value":7, "question":"Vegan fry-up"}, //nesting
-{"label":"Coconut & banana pankcakes", "value":8, "question":"Coconut and banana pancakes"}, //bottom
-{"label":"Breakfast muffins", "value":9, "question":"Breakfast muffins"}, //sans-serif
-{"label":"Peach quinoa porridge", "value":10, "question":"Cardamom and peach quinoa porridge"}
+{"label":"French toast", "value":1, "question":"Cinnamon and blueberry French toast", "url": "https://www.bbcgoodfood.com/recipes/cinnamon-blueberry-french-toast"},
+{"label":"Green rainbow smoothie bowl", "value":2, "question":"Green rainbow smoothie bowl", "url": "https://www.bbcgoodfood.com/recipes/green-rainbow-smoothie-bowl"},
+{"label":"Tomato & mushroom pancakes", "value":3, "question":"Tomato and mushroom pancakes", "url": "https://www.bbcgoodfood.com/recipes/vegan-tomato-mushroom-pancakes"},
+{"label":"Summer porridge", "value":4, "question":"Summer porridge", "url": "https://www.bbcgoodfood.com/recipes/summer-porridge"},
+{"label":"Granola", "value":5, "question":"Granola", "url": "https://www.bbcgoodfood.com/recipes/nutty-cinnamon-apple-granola"},
+{"label":"Beans & avocado on toast", "value":6, "question":"Mexican beans and avocado on toast", "url": "https://www.bbcgoodfood.com/recipes/mexican-beans-avocado-toast"},
+{"label":"Vegan fry-up", "value":7, "question":"Vegan fry-up", "url": "https://www.bbcgoodfood.com/recipes/vegan-fry"},
+{"label":"Coconut & banana pankcakes", "value":8, "question":"Coconut and banana pancakes", "url": "https://www.bbcgoodfood.com/recipes/coconut-banana-pancakes"},
+{"label":"Breakfast muffins", "value":9, "question":"Breakfast muffins", "url":"https://www.bbcgoodfood.com/recipes/vegan-breakfast-muffins"},
+{"label":"Peach quinoa porridge", "value":10, "question":"Cardamom and peach quinoa porridge","url":"https://www.bbcgoodfood.com/recipes/cardamom-peach-quinoa-porridge"}
 ];
 var svg = d3.select('#chart')
 .append("svg")
@@ -33,9 +32,9 @@ var vis = container
 .append("g");
 
 var pie = d3.layout.pie().sort(null).value(function(d){return 1;});
-// declare an arc generator function
+
 var arc = d3.svg.arc().outerRadius(r);
-// select paths, use arc generator to draw
+
 var arcs = vis.selectAll("g.slice")
 .data(pie)
 .enter()
@@ -45,7 +44,7 @@ var arcs = vis.selectAll("g.slice")
 arcs.append("path")
 .attr("fill", function(d, i){ return color(i); })
 .attr("d", function (d) { return arc(d); });
-// add the text
+
 arcs.append("text").attr("transform", function(d){
 d.innerRadius = 0;
 d.outerRadius = r;
@@ -60,7 +59,7 @@ container.on("click", spin);
 function spin(d){
 
 container.on("click", null);
-//all slices have been seen, all done
+
 console.log("OldPick: " + oldpick.length, "Data length: " + data.length);
 if(oldpick.length == data.length){
 console.log("done");
@@ -89,12 +88,14 @@ vis.transition()
 //mark question as seen
 d3.select(".slice:nth-child(" + (picked + 1) + ") path")
 .attr("fill", "#111");
-//populate question
+
+const bbcGoodFoodUrl = "https://www.bbcgoodfood.com/recipes/"
+//
 d3.select("#question h1")
-.text(data[picked].question);
+$("#question h1").html("<a href=" + data[picked].url + ">" + data[picked].question + "</a>");
 oldrotation = rotation;
 
-/* Get the result value from object "data" */
+
 console.log(data[picked].value)
 
 /* Comment the below line for restrict spin to sngle time */
